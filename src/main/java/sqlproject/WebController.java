@@ -29,7 +29,7 @@ public class WebController {
     КАК ПОЛУЧИТЬ ТЕЛО ЗАПРОСА ???
  */
 
-        //  записать контакт (name, age, content) в БД и вернуть ID контакта
+        //  записать контакт (name, age, content) в БД и вернуть ID контакта обратно
         Contact contact = new Contact(name, age, content);
         return contactService.add(contact);
     }
