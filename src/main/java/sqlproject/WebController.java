@@ -20,13 +20,13 @@ public class WebController {
     //  POST request, добавляет контакт в БД
 //    @PostMapping(value = "/add")
     @GetMapping(value = "/add")
-    public Long addContact(@RequestParam(value="name", defaultValue="defaultValue") String name,
+    public Long addContact(@RequestParam(value="name", defaultValue="defaultName") String name,
                            @RequestParam(value="age", defaultValue="0") Integer age,
-                           @RequestParam(value="content", defaultValue="defaultValue") String content) {
+                           @RequestParam(value="content", defaultValue="defaultContent") String content) {
 
 /*  информация контакта (name, surname, age) передается в теле POST-запроса,
     в ответ приходит уникальный идентификатор контакта ID
-    КАК ПОЛУЧИТЬ ТЕЛО ЗАПРОСА ???
+    КАК ПОЛУЧИТЬ ТЕЛО POST-ЗАПРОСА ???
  */
 
         //  записать контакт (name, age, content) в БД и вернуть ID контакта обратно
@@ -40,7 +40,7 @@ public class WebController {
         return "You requested " + count + " contacts";
     }
 
-    //  GET request, выдает информацию о контакте по id
+    //  GET request, выдает поле name о контакте с запрошенным id
     @GetMapping(value = "/{webid:\\d{1,5}}/{name}")
     public String handleContact(@PathVariable("webid") int id, @PathVariable("name") String name) {
         return contactService.getInfo(id, name);

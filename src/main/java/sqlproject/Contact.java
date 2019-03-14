@@ -1,11 +1,12 @@
 package sqlproject;
 
+// модель контакта
 public class Contact {
 
-    private long id; // SQL field ContactID INT NOT NULL AUTO_INCREMENT (PRIMARY KEY)
-    private String name; // SQL field ContactName VARCHAR(50) NOT NULL
-    private Integer age; // SQL field ContactAge SMALLINT NOT NULL
-    private String content; // SQL field ContactContent VARCHAR(1000)
+    private long id; // SQL field contact_id INT NOT NULL AUTO_INCREMENT (PRIMARY KEY)
+    private String name; // SQL field contact_name VARCHAR(50) NOT NULL
+    private Integer age; // SQL field contact_age SMALLINT NOT NULL
+    private String content; // SQL field contact_content VARCHAR(1000)
 
     public Contact(String name, Integer age, String content) {
 
@@ -30,9 +31,7 @@ public class Contact {
         this.name = name;
     }
 
-    public Integer getAge() {
-        return age;
-    }
+    public Integer getAge() { return age; }
 
     public void setAge(Integer age) {
         this.age = age;

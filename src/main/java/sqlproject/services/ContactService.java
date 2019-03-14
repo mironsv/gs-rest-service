@@ -22,18 +22,24 @@ public class ContactService {
     }
 
     // сервис получает информацию о контакте из БД по id
-    public String getInfo(int id, String name){
-        // проверка корректности id и name для СУБД
+    public String getInfo(int id, String name) {
+        // проверка корректности id и имени поля name для СУБД
         if ((id<=maxIdDB)&(id>0)) {
-            if (name.equals("ContactName") || name.equals("ContactAge") ||
-                    name.equals("ContactContent")) {
+            if (name.equals("contact_name") || name.equals("contact_age") ||
+                    name.equals("contact_content")) {
                 try {
                     return contactRepository.readTable(id, name);
                 } catch (SQLException e) {
                     e.printStackTrace();
-                    return "SQL Error!";
+                    return "SQL Error! " + name;
                 }
-            } else return "unhandled request";
+            } else if (name.equals("all"))
+                try {
+                return contactRepository.readTable(id, "*");
+            } catch (SQLException e) {
+                e.printStackTrace();
+                return "SQL Error! " + name;
+            } else return "unhandled request in getInfo method";
         }
         return "id=" + id + " is incorrect!";
     }
